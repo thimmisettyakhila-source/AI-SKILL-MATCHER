@@ -4,28 +4,28 @@ An intelligent web application built using Streamlit that analyzes resumes, comp
 
 
 🚀 Features
-🔹 Resume Analysis
--->Upload resume (PDF) or paste text
--->Upload job description or paste text
--->Calculates Resume Match Score
--->Displays ATS Compatibility Score
-🔹 Skill Analysis
--->Extracts skills from resume & job description
-Shows:
--->Matched Skills
--->Missing Skills
-🔹 Recommendations
--->Suggests courses for missing skills
--->Provides resume improvement tips
-🔹 PDF Report
--->Download complete analysis report as PDF
-🔹 Match History
--->Stores previous results using SQLite database
-🔹 Compare Multiple Resumes
--->Upload multiple resumes
--->Compare them against one job description
--->Displays ranking of resumes
--->Highlights the best resume
+      🔹 Resume Analysis
+            -->Upload resume (PDF) or paste text
+            -->Upload job description or paste text
+            -->Calculates Resume Match Score
+            -->Displays ATS Compatibility Score
+      🔹 Skill Analysis
+            -->Extracts skills from resume & job description
+            Shows:
+            -->Matched Skills
+            -->Missing Skills
+      🔹 Recommendations
+            -->Suggests courses for missing skills
+            -->Provides resume improvement tips
+      🔹 PDF Report
+            -->Download complete analysis report as PDF
+      🔹 Match History
+            -->Stores previous results using SQLite database
+      🔹 Compare Multiple Resumes
+            -->Upload multiple resumes
+            -->Compare them against one job description
+            -->Displays ranking of resumes
+            -->Highlights the best resume
 
 
 🛠️ Tech Stack
