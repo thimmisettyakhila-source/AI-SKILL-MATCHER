@@ -211,7 +211,7 @@ def dashboard():
 
     menu = st.sidebar.radio(
         "Navigation",
-        ["Dashboard","Match History","About"]
+        ["Dashboard","Compare Resumes","Match History","About"]
     )
 
     st.sidebar.success(st.session_state.username)
@@ -423,7 +423,52 @@ def dashboard():
 
                     st.warning("Upload Resume and Job Description")
 
+    elif menu == "Compare Resumes":
+    
+        st.title("Compare Multiple Resumes")
 
+        uploaded_files = st.file_uploader(
+            "Upload Multiple Resumes",
+            type=["pdf"],
+            accept_multiple_files=True
+        )
+        jd_text = st.text_area("Paste Job Description")
+
+        if st.button("Compare Now"):
+
+            if uploaded_files and jd_text:
+
+                results = []
+
+                clean_jd = clean_text(jd_text)
+
+                for file in uploaded_files:
+
+                    resume_text = extract_text_from_pdf(file)
+                    clean_resume = clean_text(resume_text)
+
+                    score = calculate_match(clean_resume, clean_jd)
+
+                    results.append({
+                        "Resume Name": file.name,
+                        "Score (%)": score
+                    })
+
+                df = pd.DataFrame(results)
+
+                df = df.sort_values(by="Score (%)", ascending=False).reset_index(drop=True)
+                df.index=df.index+1
+
+                st.subheader("Resume Ranking")
+                st.dataframe(df)
+
+        
+                best = df.iloc[0]
+
+                st.success(f"Best Resume: {best['Resume Name']} ({best['Score (%)']}%)")
+
+            else:
+                st.warning("Please upload resumes and paste job description")
 # ---------------- HISTORY ----------------
 
     elif menu == "Match History":
@@ -456,6 +501,7 @@ AI Resume Matching System
 Features
 - Resume Parsing
 - Job Matching
+- Compare Resumes
 - Skill Gap Detection
 - ATS Score
 - Course Recommendation
